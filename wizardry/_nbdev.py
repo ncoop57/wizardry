@@ -7,15 +7,17 @@ index = {"Ability": "00_characters.ipynb",
          "Wizard": "00_characters.ipynb",
          "Demon": "00_characters.ipynb",
          "GAME_TITLE": "01_game.ipynb",
+         "BOSS_BASE_HEALTH": "01_game.ipynb",
+         "BOSS_BASE_DAMAGE": "01_game.ipynb",
          "init_player": "01_game.ipynb",
          "combat": "01_game.ipynb",
          "COMBAT_OPTIONS": "01_game.ipynb",
          "game_loop": "01_game.ipynb",
-         "BOSS_BASE_HEALTH": "01_game.ipynb",
-         "BOSS_BASE_DAMAGE": "01_game.ipynb"}
+         "play": "02_cli.ipynb"}
 
 modules = ["characters.py",
-           "game.py"]
+           "game.py",
+           "cli.py"]
 
 doc_url = "https://ncoop57.github.io/wizardry/"
 

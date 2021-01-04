@@ -18,16 +18,18 @@ class Ability:
     @abstractmethod
     def __str__(self):
         if self.damage_type == "fire":
-            return "A jet of fire shot from your wand towards your target."
+            return "a jet of fire shot towards"
         elif self.damage_type == "water":
-            return "Ice cold water sprung from your wand directed at your target."
+            return "ice cold water is flung towards"
 
 
 # Cell
 class Character(ABC):
-    def __init__(self, name, health):
+    def __init__(self, name, max_health, ability):
         self.name = name
-        self.health = health
+        self.max_health = max_health
+        self.current_health = max_health
+        self.ability = ability
         self.level = 1
 
     @abstractmethod
@@ -39,31 +41,37 @@ class Character(ABC):
         pass
 
     def status(self):
-        print(f"{self.name}'s Health: {self.health}")
+        print(f"{self.name}'s Current Health: {self.current_health}")
+        print(f"{self.name}'s Ability Damage: {self.ability.damage}")
+        print(f"{self.name}'s Ability Type: {self.ability.damage_type}")
 
 # Cell
 class Wizard(Character):
-    def __init__(self, name, health, ability):
-        super().__init__(name, health)
-        self.ability = ability
+    def __init__(self, name, max_health, ability):
+        super().__init__(name, max_health, ability)
 
     def attack(self, target):
-        # scaling = random.uniform(0, 1)
-        print(self.ability)
-        target.health -= self.ability.damage
+        print(f"From {self.name}'s wand, {self.ability} {target.name}")
+        target.current_health -= self.ability.damage
 
     def defend(self):
         pass
 
+    def level_up(self):
+        self.level += 1
+        self.max_health = self.max_health * self.level
+        self.current_health = self.max_health
+        self.ability.damage = self.ability.damage * self.level
+
 # Cell
 class Demon(Character):
-    def __init__(self, name, health, ability):
-        super().__init__(name, health)
-        self.ability = ability
+    def __init__(self, name, max_health, damage):
+        super().__init__(name, max_health, Ability(damage, "fire"))
 
     def attack(self, target):
         # scaling = random.uniform(0, 1)
-        target.health -= self.ability.damage
+        print(f"From {self.name}'s wand, {self.ability} {target.name}")
+        target.current_health -= self.ability.damage
 
     def defend(self):
         pass

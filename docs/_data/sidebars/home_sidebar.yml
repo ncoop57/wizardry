@@ -14,7 +14,7 @@ entries:
       url: characters.html
     - output: web,pdf
       title: Game
-      url: game.html
+      url: cli.html
     output: web
     title: wizardry
   output: web
