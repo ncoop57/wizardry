@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: ${{ github.head_ref }}
+        ref: main
     - uses: actions/setup-python@v1
       with:
         python-version: '3.6'
@@ -27,3 +27,4 @@ jobs:
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: Update version number
+        branch: main
